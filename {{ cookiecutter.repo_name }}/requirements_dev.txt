@@ -1,0 +1,8 @@
+# alphabetically ordered
+
+black
+flake8
+isort
+jupyter
+mypy
+pytest
