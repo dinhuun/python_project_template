@@ -3,7 +3,7 @@
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
-
+PYTHON = {{ cookiecutter.python_interpreter }}
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -16,9 +16,9 @@ clean:
 
 ## create virtual environment
 env:
-    python -m venv env
-    pip install -r requirements.txt
-    pip install -r requirements_dev.txt
+    PYTHON -m venv env
+    PYTHON -m pip install -r requirements.txt
+    PYTHON -m pip install -r requirements_dev.txt
 
 ## lint
 lint:
