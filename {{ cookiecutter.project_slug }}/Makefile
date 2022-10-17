@@ -11,8 +11,8 @@ PYTHON = {{ cookiecutter.python_interpreter }}
 
 ## delete compiled Python files
 clean:
-	find . -type f -name "*.py[co]" -delete
-	find . -type d -name "__pycache__" -delete
+    find . -type f -name "*.py[co]" -delete
+    find . -type d -name "__pycache__" -delete
 
 ## create virtual environment
 env:
@@ -24,12 +24,12 @@ env:
 lint:
     isort src
     black src
-	flake8 src
-	mypy src
+    flake8 src
+    mypy src
 
 ## test
 test:
-	pytest tests/unit/
+    pytest tests/unit/
 
 #################################################################################
 # PROJECT RULES                                                                 #

@@ -26,11 +26,11 @@ def no_curlies(filepath):
 class TestCookieSetup(object):
     def test_project_name(self):
         project = self.path
-        if pytest.param.get('project_name'):
+        if pytest.param.get('{{cookiecutter.project_slug}}'):
             name = system_check('DrivenData')
             assert project.name == name
         else:
-            assert project.name == 'project_name'
+            assert project.name == '{{cookiecutter.project_slug}}'
 
     def test_author(self):
         setup_ = self.path / 'setup.py'
@@ -45,7 +45,7 @@ class TestCookieSetup(object):
         readme_path = self.path / 'README.md'
         assert readme_path.exists()
         assert no_curlies(readme_path)
-        if pytest.param.get('project_name'):
+        if pytest.param.get('{{cookiecutter.project_slug}}'):
             with open(readme_path) as fin:
                 assert 'DrivenData' == next(fin).strip()
 

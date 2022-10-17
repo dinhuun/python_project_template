@@ -34,15 +34,17 @@ def get_requirements():
 
 
 setup(
-    author='{{ cookiecutter.author_name }}',
+    author="{{ cookiecutter.author_name }}",
+    author_email="to be disclosed",
     description="{{ cookiecutter.description }}",
-    license="{% if cookiecutter.open_source_license == 'MIT' %}MIT{% elif cookiecutter.open_source_license == 'BSD - 3 - Clause' %}BSD-3{% endif %}",
-    name="{{ cookiecutter.project_name }}",
-    url="TBD",
-    version=get_version(),
-    package_dir={"": "src"},
-    packages=find_packages("src"),
     include_package_data=True,
-    package_data={"{{ cookiecutter.project_name }}": ["VERSION", "requirements.txt", "MANIFEST.in"]},
     install_requires=get_requirements(),
+    license="{% if cookiecutter.open_source_license == 'MIT' %}MIT{% elif cookiecutter.open_source_license == 'BSD - "
+            "3 - Clause' %}BSD-3{% endif %}",
+    name="{{ cookiecutter.project_slug }}",
+    packages=find_packages("src"),
+    package_data={"{{ cookiecutter.project_slug }}": ["VERSION", "requirements.txt", "MANIFEST.in"]},
+    package_dir={"": "src"},
+    url="to be determined",
+    version=get_version(),
 )
