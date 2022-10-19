@@ -3,7 +3,6 @@
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
-PYTHON = {{ cookiecutter.python_interpreter }}
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -11,25 +10,24 @@ PYTHON = {{ cookiecutter.python_interpreter }}
 
 ## delete compiled Python files
 clean:
-    find . -type f -name "*.py[co]" -delete
-    find . -type d -name "__pycache__" -delete
+	find . -type f -name "*.py[co]" -delete
+	find . -type d -name "__pycache__" -delete
 
 ## create virtual environment
 env:
-    PYTHON -m venv env
-    PYTHON -m pip install -r requirements.txt
-    PYTHON -m pip install -r requirements_dev.txt
+	python -m venv env
+	. env/bin/activate && python -m pip install -U pip && pip install wheel && pip install -r requirements.txt && pip install -r requirements_dev.txt && pip install -e .
 
 ## lint
 lint:
-    isort src
-    black src
-    flake8 src
-    mypy src
+	isort src
+	black src
+	flake8 src
+	mypy src
 
 ## test
 test:
-    pytest tests/unit/
+	pytest tests/unit/
 
 #################################################################################
 # PROJECT RULES                                                                 #
