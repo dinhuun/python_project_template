@@ -1,29 +1,31 @@
 ## Cookiecutter Python Project Template
 
-A template for Python projects
+This is a `cookiecutter` Python project template that you can use to create new projects.
 
-Requirements to use this cookiecutter template
------------
- - Python 3.8+
- - `cookiecutter>= 1.4.0` that can be installed with `pip` or `conda`
+### Prerequisites
+* Python 3.8+
+* `cookiecutter` that can be installed with `pip` or `conda`
 
-``` bash
+```
 $ pip install cookiecutter
 # or
 $ conda config --add channels conda-forge
 $ conda install cookiecutter
 ```
 
+### Create new project
+```
+cookiecutter https://github.com/dinhuun/python_project_template.git
+project_name: name of your project, Enter
+project_slug: Enter
+author_name: author name, Enter
+description: description, Enter
+open_source_license: 1/2/3, Enter
+python_interpreter: 1/2/3, Enter
+```
+and a new project `project_slug` will be created in current directory.
 
-To start a new project, run:
-------------
-
-    cookiecutter https://github.com/dinhuun/python_project_template.git
-
-## The resulting directory structure
-
-Your new project will look like this: 
-
+It will look like this
 ```
 ├── .flake8
 ├── .gitignore
@@ -38,12 +40,12 @@ Your new project will look like this:
 ├── notebooks              <- jupyter notebooks
 ├── src                    <- source code
     ├── __init__.py        <- makes src a Python module
-    └── project_name       <- where modules are
-        ├── core.py        <- module core
+    └── project_slug       <- where modules are
+        ├── hello.py       <- module hello
         └── __init__.py
 └── tests                  <- tests
     ├── __init__.py        <- makes tests a Python module
     └── unit               <- unit tests
-        ├── test_core.py   <- tests for module core
+        ├── test_hello.py  <- tests for module hello
         └── __init__.py
 ```
