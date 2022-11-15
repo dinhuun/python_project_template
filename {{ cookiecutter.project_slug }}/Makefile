@@ -1,13 +1,5 @@
 .PHONY: clean env lint test
 
-#################################################################################
-# GLOBALS                                                                       #
-#################################################################################
-
-#################################################################################
-# COMMANDS                                                                      #
-#################################################################################
-
 ## delete compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
@@ -26,35 +18,17 @@ lint:
 	mypy src
 
 ## test
-test:
+test_integration:
+	pytest tests/integration/
+
+test_unit:
 	pytest tests/unit/
-
-#################################################################################
-# PROJECT RULES                                                                 #
-#################################################################################
-
-
-#################################################################################
-# Self Documenting Commands                                                     #
-#################################################################################
 
 .DEFAULT_GOAL := help
 
-# Inspired by <http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html>
-# sed script explained:
-# /^##/:
-# 	* save line in hold space
-# 	* purge line
-# 	* Loop:
-# 		* append newline + line to hold space
-# 		* go to next line
-# 		* if line starts with doc comment, strip comment character off and loop
-# 	* remove target prerequisites
-# 	* append hold space (+ newline) to line
-# 	* replace newline plus comments by `---`
-# 	* print line
-# Separate expressions are necessary because labels cannot be delimited by
-# semicolon; see <http://stackoverflow.com/a/11799865/1968>
+# inspired by <http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html>
+# separate expressions are necessary because labels cannot be delimited by semicolon
+# see <http://stackoverflow.com/a/11799865/1968>
 .PHONY: help
 help:
 	@echo "$$(tput bold)Available rules:$$(tput sgr0)"
