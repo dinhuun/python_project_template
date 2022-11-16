@@ -33,7 +33,7 @@ It will look like this
 ├── LICENSE
 ├── Makefile               <- Makefile with commands like `make env` or `make lint`
 ├── README.md              <- README for this project
-├── VERSION
+├── VERSION                <- version for semantic versioning
 ├── requirements.txt       <- code requirements
 ├── requirements_dev.txt   <- development requirements
 ├── setup.py               <- makes project pip installable, such as `pip install -e .` so that src can be imported
@@ -45,6 +45,7 @@ It will look like this
         └── __init__.py
 └── tests                  <- tests
     ├── __init__.py        <- makes tests a Python module
+    ├── integration        <- integration tests
     └── unit               <- unit tests
         ├── test_hello.py  <- tests for module hello
         └── __init__.py
