@@ -27,6 +27,7 @@ and a new project `project_slug` will be created in current directory.
 
 It will look like this
 ```
+project_slug               <- top level
 ├── .flake8
 ├── .gitignore
 ├── .mypy.ini
@@ -37,6 +38,7 @@ It will look like this
 ├── requirements.txt       <- code requirements
 ├── requirements_dev.txt   <- development requirements
 ├── setup.py               <- makes project pip installable, such as `pip install -e .` so that src can be imported
+├── data                   <- data
 ├── notebooks              <- jupyter notebooks
 ├── src                    <- source code
     ├── __init__.py        <- makes src a Python module
@@ -45,8 +47,8 @@ It will look like this
         └── __init__.py
 └── tests                  <- tests
     ├── __init__.py        <- makes tests a Python module
-    ├── integration        <- integration tests
-    └── unit               <- unit tests
+    ├── integration        <- integration tests to test that internal parts and external parts collectively work
+    └── unit               <- unit tests to test that internal parts individually work
         ├── test_hello.py  <- tests for module hello
         └── __init__.py
 ```
