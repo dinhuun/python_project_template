@@ -16,18 +16,17 @@ $ conda install cookiecutter
 ### Create new project
 ```
 cookiecutter https://github.com/dinhuun/python_project_template.git
-project_name: name of your project, Enter
-project_slug: Enter
+project_name: your project name, Enter
+project_slug: your project slug, Enter
 author_name: author name, Enter
 description: description, Enter
 open_source_license: 1/2/3, Enter
-python_interpreter: 1/2/3, Enter
 ```
 and a new project `project_slug` will be created in current directory.
 
 It will look like this
 ```
-project_slug               <- top level
+project_name               <- top level
 ├── .flake8
 ├── .gitignore
 ├── .mypy.ini
