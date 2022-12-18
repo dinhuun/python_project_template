@@ -1,8 +1,7 @@
 {
-    "project_name": "Your Project Name",
-    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "project_name": "your project name, such as more-itertools",
+    "project_slug": "your project slug, aka package name in snake case, such as more_itertools",
     "author_name": "Your name (or your organization/company/team)",
     "description": "A short description of the project.",
-    "open_source_license": ["MIT", "BSD-3-Clause", "No license file"],
-    "python_interpreter": ["python3.8", "python3.9", "python3.10"]
+    "open_source_license": ["MIT", "BSD-3-Clause", "No license file"]
 }
