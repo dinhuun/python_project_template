@@ -16,6 +16,10 @@ lint:
 	black src
 	flake8 src
 	mypy src
+	isort tests
+	black tests
+	flake8 tests
+	mypy tests
 
 ## test
 test_integration:
