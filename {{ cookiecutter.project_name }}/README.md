@@ -4,7 +4,7 @@ This package
 * does that
 
 ### Prerequisites
-Python 3.9
+Python 3.12+
 
 ### Requirements
 see `requirements.txt` and `requirements_dev.txt`
