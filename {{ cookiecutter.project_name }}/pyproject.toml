@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=75.8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{cookiecutter.project_slug}}"
+version = "0.0.1"
+authors = [{name = "{{cookiecutter.author_name}}", email="{{cookiecutter.author_email}}"}]
+maintainers = [{name = "{{cookiecutter.author_name}}", email="{{cookiecutter.author_email}}"}]
+description = "{{cookiecutter.description}}"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Indpendent"]
+
+dynamic = ["dependencies"]
+
+[project.urls]
+Homepage = "https://example.com"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt", "requirements_dev.txt"]}
