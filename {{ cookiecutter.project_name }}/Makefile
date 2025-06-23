@@ -8,7 +8,7 @@ clean:
 ## create virtual environment
 env:
 	python -m venv env
-	. env/bin/activate && python -m pip install -U pip && pip install wheel && pip install -r requirements.txt && pip install -r requirements_dev.txt && pip install -e .
+	. env/bin/activate && python -m pip install -U pip && pip install wheel && pip install -e .
 
 ## lint
 lint:
