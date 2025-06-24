@@ -3,7 +3,7 @@
 This is a `cookiecutter` Python project template that you can use to create new projects.
 
 ### Prerequisites
-* Python 3.8+
+* Python 3.12+
 * `cookiecutter` that can be installed with `pip` or `conda`
 
 ```
@@ -19,6 +19,7 @@ cookiecutter https://github.com/dinhuun/python_project_template.git
 project_name: your project name, Enter
 project_slug: your project slug, Enter
 author_name: author name, Enter
+author_email: author email, Enter
 description: description, Enter
 open_source_license: 1/2/3, Enter
 ```
@@ -29,23 +30,20 @@ It will look like this
 project_name               <- top level
 ├── .flake8
 ├── .gitignore
+├── .isort.cfg
 ├── .mypy.ini
-├── LICENSE
 ├── Makefile               <- Makefile with commands like `make env` or `make lint`
 ├── README.md              <- README for this project
-├── VERSION                <- version for semantic versioning
+├── pyproject.toml         <- makes project pip installable, such as `pip install -e .` so that src can be imported
 ├── requirements.txt       <- code requirements
 ├── requirements_dev.txt   <- development requirements
-├── setup.py               <- makes project pip installable, such as `pip install -e .` so that src can be imported
 ├── data                   <- data
 ├── notebooks              <- jupyter notebooks
 ├── src                    <- source code
-    ├── __init__.py        <- makes src a Python module
     └── project_slug       <- where modules are
         ├── hello.py       <- module hello
         └── __init__.py
 └── tests                  <- tests
-    ├── __init__.py        <- makes tests a Python module
     ├── integration        <- integration tests to test that internal parts and external parts collectively work
     └── unit               <- unit tests to test that internal parts individually work
         ├── test_hello.py  <- tests for module hello
