@@ -2,13 +2,13 @@
 
 *.egg-info
 *.pyc
-build
-data
-dist
-env
-pip-wheel-metadata
 .coverage*
 .eggs
 .mypy_cache
 .pytest_cache
+build
+data
+dist
+env
 notebooks
+pip-wheel-metadata
