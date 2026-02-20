@@ -1,74 +1,50 @@
-.PHONY: clean env lint test
+.PHONY: clean help install lint sync test test_integration test_unit
 
-## delete compiled Python files
+# set default goal to 'help' so nothing runs by accident
+.DEFAULT_GOAL := help
+
+## build project into wheel and sdist
+build: clean
+	@echo "building distribution archives..."
+	uv build
+	@echo "build complete. Artifacts are in the dist/ directory"
+
+## delete compiled Python files and caches
 clean:
-	find . -type f -name "*.py[co]" -delete
-	find . -type d -name "__pycache__" -delete
+	@echo "Cleaning up build and cache artifacts..."
+	@# 1. Combined find for bytecode and pycaches (surgical & fast)
+	@find . -type f -name "*.py[co]" -delete -o -type d -name "__pycache__" -delete
+	@# 2. Remove tool-specific caches and build artifacts
+	@rm -rf .ruff_cache .ty_cache .pytest_cache .uv_cache .coverage dist build *.egg-info
+	@echo "Clean complete."
 
-## create virtual environment
-env:
-	python -m venv env
-	. env/bin/activate && python -m pip install -U pip && pip install wheel && pip install -e .
+## sync environment
+install: sync
+sync:
+	@echo "Syncing project dependencies..."
+	uv sync
+	@echo "Environment ready. Use 'uv run <command>' to execute."
 
 ## lint
 lint:
-	isort src
-	black src
-	flake8 src
-	mypy src
-	isort tests
-	black tests
-	flake8 tests
-	mypy tests
+	uv run ruff check --fix src tests
+	uv run ruff format src tests
+	uv run ty check src tests
 
-## test
+## test all
+test:
+	uv run pytest tests/unit/ tests/integration/
+
+# test integration
 test_integration:
-	pytest tests/integration/
+	uv run pytest tests/integration/
 
+## test unit
 test_unit:
-	pytest tests/unit/
+	uv run pytest tests/unit/
 
-.DEFAULT_GOAL := help
-
-# inspired by <http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html>
-# separate expressions are necessary because labels cannot be delimited by semicolon
-# see <http://stackoverflow.com/a/11799865/1968>
-.PHONY: help
+## show this help message
 help:
 	@echo "$$(tput bold)Available rules:$$(tput sgr0)"
 	@echo
-	@sed -n -e "/^## / { \
-		h; \
-		s/.*//; \
-		:doc" \
-		-e "H; \
-		n; \
-		s/^## //; \
-		t doc" \
-		-e "s/:.*//; \
-		G; \
-		s/\\n## /---/; \
-		s/\\n/ /g; \
-		p; \
-	}" ${MAKEFILE_LIST} \
-	| LC_ALL='C' sort --ignore-case \
-	| awk -F '---' \
-		-v ncol=$$(tput cols) \
-		-v indent=19 \
-		-v col_on="$$(tput setaf 6)" \
-		-v col_off="$$(tput sgr0)" \
-	'{ \
-		printf "%s%*s%s ", col_on, -indent, $$1, col_off; \
-		n = split($$2, words, " "); \
-		line_length = ncol - indent; \
-		for (i = 1; i <= n; i++) { \
-			line_length -= length(words[i]) + 1; \
-			if (line_length <= 0) { \
-				line_length = ncol - indent - length(words[i]) - 1; \
-				printf "\n%*s ", -indent, " "; \
-			} \
-			printf "%s ", words[i]; \
-		} \
-		printf "\n"; \
-	}' \
-	| more $(shell test $(shell uname) = Darwin && echo '--no-init --raw-control-chars')
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-19s\033[0m %s\n", $$1, $$2}'
