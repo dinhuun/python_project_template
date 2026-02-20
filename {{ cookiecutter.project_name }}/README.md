@@ -4,7 +4,7 @@ This package
 * does that
 
 ### Prerequisites
-Python 3.12+
+Python 3.13+, `make`, `uv`
 
 ### Requirements
 see `requirements.txt` and `requirements_dev.txt`
