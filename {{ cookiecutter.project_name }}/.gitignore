@@ -1,14 +1,31 @@
 # alphabetically ordered
 
-*.egg-info
+# build, distribution
+*.egg-info/
+build/
+dist/
+
+# byte-compiled
+__pycache__/
 *.pyc
-.coverage*
-.eggs
-.mypy_cache
-.pytest_cache
-build
-data
-dist
-env
-notebooks
-pip-wheel-metadata
+*.pyd
+*.pyo
+
+# caches and temp files
+.coverage
+.coverage.*
+.hypothesis/
+.pytest_cache/
+.ruff_cache/
+
+# environments
+.env
+.venv/
+env/
+venv/
+
+# project
+.ipynb_checkpoints/
+data/
+notebooks/
+pip-wheel-metadata/
