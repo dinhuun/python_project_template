@@ -3,7 +3,7 @@
 This is a `cookiecutter` Python project template that you can use to create new projects.
 
 ### Prerequisites
-* Python 3.12+
+* Python 3.13+
 * `cookiecutter` that can be installed with `pip` or `conda`
 
 ```
@@ -15,7 +15,7 @@ $ conda install cookiecutter
 
 ### Create new project
 ```
-cookiecutter https://github.com/dinhuun/python_project_template.git
+cookiecutter https://github.com/dinhuun/python_project_template.git  # or python_project_template if cloned to local
 project_name: your project name, Enter
 project_slug: your project slug, Enter
 author_name: author name, Enter
@@ -28,15 +28,6 @@ and a new project `project_slug` will be created in current directory.
 It will look like this
 ```
 project_name               <- top level
-├── .flake8
-├── .gitignore
-├── .isort.cfg
-├── .mypy.ini
-├── Makefile               <- Makefile with commands like `make env` or `make lint`
-├── README.md              <- README for this project
-├── pyproject.toml         <- makes project pip installable, such as `pip install -e .` so that src can be imported
-├── requirements.txt       <- code requirements
-├── requirements_dev.txt   <- development requirements
 ├── data                   <- data
 ├── notebooks              <- jupyter notebooks
 ├── src                    <- source code
@@ -48,4 +39,8 @@ project_name               <- top level
     └── unit               <- unit tests to test that internal parts individually work
         ├── test_hello.py  <- tests for module hello
         └── __init__.py
+├── .gitignore
+├── Makefile               <- Makefile with commands like `make env` or `make lint`
+├── pyproject.toml         <- makes project pip installable, such as `pip install -e .` so that src can be imported
+├── README.md              <- README for this project
 ```
