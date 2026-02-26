@@ -33,15 +33,11 @@ src = ["src", "tests"]
 target-version = "py313"
 
 [tool.ruff.lint]
-select = ["B", "E4", "E7", "E9", "E999", "F", "I"]
-ignore = []
+select = ["B", "E4", "E7", "E9", "F", "I"]
+ignore = ["E741"]
 
 [tool.ruff.lint.isort]
 lines-after-imports = 2
 
-[tool.ty]
-exclude = ["_pb2\\.py$"]
-show-error-codes = true
-
-[tool.ty.diagnostics]
-reportMissingImports = "none"
+[tool.ty.rules]
+unresolved-import = "error"
