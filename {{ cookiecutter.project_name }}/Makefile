@@ -9,21 +9,19 @@ build: clean
 	uv build
 	@echo "build complete. Artifacts are in the dist/ directory"
 
-## delete compiled Python files and caches
+## remove build artifacts, cache artifacts, compiled files
 clean:
-	@echo "Cleaning up build and cache artifacts..."
-	@# 1. Combined find for bytecode and pycaches (surgical & fast)
+	@echo "cleaning up build artifacts, compiled files, cache artifacts..."
 	@find . -type f -name "*.py[co]" -delete -o -type d -name "__pycache__" -delete
-	@# 2. Remove tool-specific caches and build artifacts
 	@rm -rf .ruff_cache .ty_cache .pytest_cache .uv_cache .coverage dist build *.egg-info
-	@echo "Clean complete."
+	@echo "clean complete"
 
 ## sync environment
 install: sync
 sync:
-	@echo "Syncing project dependencies..."
+	@echo "syncing environments..."
 	uv sync
-	@echo "Environment ready. Use 'uv run <command>' to execute."
+	@echo "synced environment. Use 'uv run <command>' to execute."
 
 ## lint
 lint:
