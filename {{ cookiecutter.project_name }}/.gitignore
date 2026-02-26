@@ -25,7 +25,7 @@ env/
 venv/
 
 # project
-.ipynb_checkpoints/
+*.ipynb_checkpoints/
 data/
 notebooks/
 pip-wheel-metadata/
